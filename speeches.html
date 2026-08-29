@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Speeches | SpeechCheck India</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+            background: #f5f6f8;
+            color: #222;
+        }
+
+
+        /* HEADER */
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 18px 0;
+        }
+
+
+        .header-container {
+            width: 92%;
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-size: 15px;
+        }
+
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+
+        .language-buttons button {
+            border: none;
+            padding: 8px 12px;
+            margin-left: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+
+        /* MAIN */
+
+        .container {
+            width: 92%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+
+        .page-title {
+            background: white;
+            text-align: center;
+            padding: 50px 20px;
+            margin-bottom: 35px;
+        }
+
+
+        .page-title h1 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+
+        .page-title p {
+            color: #666;
+            font-size: 17px;
+        }
+
+
+        /* FILTERS */
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+
+        .filter-button {
+            border: 1px solid #ddd;
+            background: white;
+            padding: 10px 18px;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+
+        .filter-button:hover {
+            background: #eee;
+        }
+
+
+        /* SPEECH CARD */
+
+        .speech {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.06);
+        }
+
+
+        .speech-date {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+
+        .speaker {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+
+        .speech h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+
+        .speech-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+
+        .speech-button {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 10px 17px;
+            background: #111827;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+
+        /* HINDI */
+
+        .hindi {
+            display: none;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+            margin-top: 50px;
+            background: #111827;
+            color: white;
+            padding: 35px;
+            text-align: center;
+        }
+
+
+        footer p {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+
+        /* MOBILE */
+
+        @media (max-width: 700px) {
+
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+
+            nav {
+                text-align: center;
+            }
+
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+
+            .page-title h1 {
+                font-size: 32px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <div class="header-container">
+
+
+        <div class="logo">
+
+            <span class="english">
+                SpeechCheck India
+            </span>
+
+            <span class="hindi">
+                स्पीचचेक इंडिया
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <nav style="display:inline-block;">
+
+                <a href="index.html" class="english">
+                    Home
+                </a>
+
+                <a href="speeches.html" class="english">
+                    Speeches
+                </a>
+
+                <a href="#" class="english">
+                    Fact Checks
+                </a>
+
+                <a href="#" class="english">
+                    Methodology
+                </a>
+
+
+                <a href="index.html" class="hindi">
+                    होम
+                </a>
+
+                <a href="speeches.html" class="hindi">
+                    भाषण
+                </a>
+
+                <a href="#" class="hindi">
+                    तथ्य-जांच
+                </a>
+
+                <a href="#" class="hindi">
+                    तरीका
+                </a>
+
+            </nav>
+
+
+            <span class="language-buttons">
+
+                <button onclick="changeLanguage('en')">
+                    English
+                </button>
+
+                <button onclick="changeLanguage('hi')">
+                    हिंदी
+                </button>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- PAGE TITLE -->
+
+<section class="page-title">
+
+    <div class="english">
+
+        <h1>
+            Political Speeches
+        </h1>
+
+        <p>
+            Browse speeches and examine the claims
+            made within them.
+        </p>
+
+    </div>
+
+
+    <div class="hindi">
+
+        <h1>
+            राजनीतिक भाषण
+        </h1>
+
+        <p>
+            भाषण देखें और उनमें किए गए दावों की
+            तथ्य-जांच करें।
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- MAIN CONTENT -->
+
+<main class="container">
+
+
+    <!-- FILTERS -->
+
+    <div class="filters">
+
+        <button class="filter-button">
+
+            <span class="english">
+                All
+            </span>
+
+            <span class="hindi">
+                सभी
+            </span>
+
+        </button>
+
+
+        <button class="filter-button">
+
+            <span class="english">
+                Prime Minister
+            </span>
+
+            <span class="hindi">
+                प्रधानमंत्री
+            </span>
+
+        </button>
+
+
+        <button class="filter-button">
+
+            <span class="english">
+                Union Ministers
+            </span>
+
+            <span class="hindi">
+                केंद्रीय मंत्री
+            </span>
+
+        </button>
+
+
+        <button class="filter-button">
+
+            <span class="english">
+                Other Leaders
+            </span>
+
+            <span class="hindi">
+                अन्य नेता
+            </span>
+
+        </button>
+
+    </div>
+
+
+
+    <!-- SPEECH 1 -->
+
+    <article class="speech">
+
+
+        <div class="english">
+
+            <div class="speech-date">
+                29 August 2026
+            </div>
+
+            <div class="speaker">
+                Example Speaker
+            </div>
+
+            <h2>
+                Example Public Address
+            </h2>
+
+            <p class="speech-description">
+                Speech description will appear here.
+                Claims from this speech can be examined
+                against publicly available evidence.
+            </p>
+
+            <a href="#" class="speech-button">
+                View Speech
+            </a>
+
+        </div>
+
+
+
+        <div class="hindi">
+
+            <div class="speech-date">
+                29 अगस्त 2026
+            </div>
+
+            <div class="speaker">
+                उदाहरण वक्ता
+            </div>
+
+            <h2>
+                उदाहरण सार्वजनिक भाषण
+            </h2>
+
+            <p class="speech-description">
+                भाषण का विवरण यहां दिखाई देगा।
+                इस भाषण में किए गए दावों की
+                सार्वजनिक सबूतों से जांच की जा सकती है।
+            </p>
+
+            <a href="#" class="speech-button">
+                भाषण देखें
+            </a>
+
+        </div>
+
+
+    </article>
+
+
+
+    <!-- SPEECH 2 -->
+
+    <article class="speech">
+
+
+        <div class="english">
+
+            <div class="speech-date">
+                28 August 2026
+            </div>
+
+            <div class="speaker">
+                Example Union Minister
+            </div>
+
+            <h2>
+                Example Government Address
+            </h2>
+
+            <p class="speech-description">
+                This is another demonstration speech.
+                Real speech information will be added
+                when our data system is connected.
+            </p>
+
+            <a href="#" class="speech-button">
+                View Speech
+            </a>
+
+        </div>
+
+
+
+        <div class="hindi">
+
+            <div class="speech-date">
+                28 अगस्त 2026
+            </div>
+
+            <div class="speaker">
+                उदाहरण केंद्रीय मंत्री
+            </div>
+
+            <h2>
+                उदाहरण सरकारी भाषण
+            </h2>
+
+            <p class="speech-description">
+                यह एक उदाहरण भाषण है।
+                डेटा सिस्टम जुड़ने के बाद वास्तविक
+                भाषण की जानकारी यहां दिखाई जाएगी।
+            </p>
+
+            <a href="#" class="speech-button">
+                भाषण देखें
+            </a>
+
+        </div>
+
+
+    </article>
+
+
+</main>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="english">
+
+        <strong>
+            SpeechCheck India
+        </strong>
+
+        <p>
+            Evidence-based political fact checking.
+        </p>
+
+    </div>
+
+
+    <div class="hindi">
+
+        <strong>
+            स्पीचचेक इंडिया
+        </strong>
+
+        <p>
+            सबूत-आधारित राजनीतिक तथ्य-जांच।
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+<!-- LANGUAGE SCRIPT -->
+
+<script>
+
+function changeLanguage(language) {
+
+    const englishElements =
+        document.querySelectorAll(".english");
+
+    const hindiElements =
+        document.querySelectorAll(".hindi");
+
+
+    if (language === "en") {
+
+        englishElements.forEach(function(element) {
+
+            element.style.display = "";
+
+        });
+
+
+        hindiElements.forEach(function(element) {
+
+            element.style.display = "none";
+
+        });
+
+
+        document.documentElement.lang = "en";
+
+    }
+
+
+    if (language === "hi") {
+
+        englishElements.forEach(function(element) {
+
+            element.style.display = "none";
+
+        });
+
+
+        hindiElements.forEach(function(element) {
+
+            element.style.display = "";
+
+        });
+
+
+        document.documentElement.lang = "hi";
+
+    }
+
+}
+
+</script>
+
+
+</body>
+  </html>
