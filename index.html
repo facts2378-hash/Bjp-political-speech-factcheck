@@ -1,228 +1,849 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Political Speech Fact Check | राजनीतिक भाषण तथ्य-जांच</title>
+    <title>SpeechCheck India</title>
 
     <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: Arial, "Noto Sans Devanagari", sans-serif;
-            margin: 0;
-            background: #f4f4f4;
+            background: #f5f6f8;
             color: #222;
         }
 
+        /* HEADER */
+
         header {
-            background: #111;
+            background: #111827;
             color: white;
-            padding: 20px;
-            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header {
+            max-width: 1200px;
+            width: 92%;
+            margin: auto;
+            padding: 18px 0;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            white-space: nowrap;
         }
 
         nav {
-            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        button {
-            padding: 10px 18px;
+        nav button,
+        .language button {
+            background: transparent;
+            color: white;
             border: none;
-            border-radius: 6px;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 15px;
         }
+
+        nav button:hover {
+            text-decoration: underline;
+        }
+
+        .language {
+            display: flex;
+            gap: 5px;
+        }
+
+        .language button {
+            background: white;
+            color: #111827;
+            padding: 7px 10px;
+            border-radius: 5px;
+        }
+
+        /* GENERAL */
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
+            width: 92%;
             margin: auto;
-            padding: 25px;
         }
+
+        .section {
+            padding: 55px 0;
+        }
+
+        /* HERO */
 
         .hero {
             background: white;
-            padding: 35px;
-            border-radius: 12px;
-            margin-bottom: 25px;
+            text-align: center;
+            padding: 80px 20px;
         }
+
+        .hero h1 {
+            max-width: 850px;
+            margin: auto;
+            font-size: 45px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 20px auto;
+            color: #666;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .main-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 13px 22px;
+            border: none;
+            border-radius: 7px;
+            background: #111827;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* SPEECHES */
+
+        .speech {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        .date {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .speaker {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .speech h3 {
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .speech p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* FACT CHECK */
 
         .claim {
             background: white;
             padding: 25px;
             border-radius: 12px;
             margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .rating {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 8px 12px;
+            background: #eee;
+            border-radius: 5px;
             font-weight: bold;
-            font-size: 18px;
         }
 
-        footer {
-            margin-top: 40px;
-            padding: 25px;
-            text-align: center;
-            background: #111;
-            color: white;
+        .claim p {
+            line-height: 1.6;
+            color: #555;
         }
+
+        /* METHODOLOGY */
+
+        .method {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .method li {
+            margin: 15px 0;
+            line-height: 1.5;
+        }
+
+        /* HIDDEN LANGUAGE */
 
         .hindi {
             display: none;
         }
+
+        /* FOOTER */
+
+        footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 35px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 750px) {
+
+            .header {
+                flex-direction: column;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+        }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+<!-- ================= HEADER ================= -->
+
 <header>
 
-    <!-- English -->
-    <div class="english">
-        <h1>Political Speech Fact Check</h1>
-        <p>Independent verification of political claims</p>
+    <div class="header">
+
+        <div class="logo">
+
+            <span class="english">
+                SpeechCheck India
+            </span>
+
+            <span class="hindi">
+                स्पीचचेक इंडिया
+            </span>
+
+        </div>
+
+
+        <nav>
+
+            <button onclick="showSection('home')">
+                <span class="english">Home</span>
+                <span class="hindi">होम</span>
+            </button>
+
+            <button onclick="showSection('speeches')">
+                <span class="english">Speeches</span>
+                <span class="hindi">भाषण</span>
+            </button>
+
+            <button onclick="showSection('checks')">
+                <span class="english">Fact Checks</span>
+                <span class="hindi">तथ्य-जांच</span>
+            </button>
+
+            <button onclick="showSection('methodology')">
+                <span class="english">Methodology</span>
+                <span class="hindi">तरीका</span>
+            </button>
+
+
+            <div class="language">
+
+                <button onclick="changeLanguage('en')">
+                    English
+                </button>
+
+                <button onclick="changeLanguage('hi')">
+                    हिंदी
+                </button>
+
+            </div>
+
+        </nav>
+
     </div>
-
-    <!-- Hindi -->
-    <div class="hindi">
-        <h1>राजनीतिक भाषण तथ्य-जांच</h1>
-        <p>राजनीतिक दावों का स्वतंत्र सत्यापन</p>
-    </div>
-
-    <nav>
-        <button onclick="changeLanguage('en')">
-            English
-        </button>
-
-        <button onclick="changeLanguage('hi')">
-            हिंदी
-        </button>
-    </nav>
 
 </header>
 
 
-<main class="container">
 
-    <!-- English version -->
-    <section class="hero english">
+<!-- ================= HOME ================= -->
 
-        <h2>What was said, and what does the evidence show?</h2>
+<section id="home" class="page-section">
 
-        <p>
-            We examine statements made in political speeches
-            and compare them with publicly available evidence.
-        </p>
+    <div class="hero">
 
-    </section>
+        <div class="english">
 
-
-    <!-- Hindi version -->
-    <section class="hero hindi">
-
-        <h2>क्या कहा गया और सबूत क्या बताते हैं?</h2>
-
-        <p>
-            हम राजनीतिक भाषणों में किए गए दावों की जांच करते हैं
-            और उनकी तुलना सार्वजनिक रूप से उपलब्ध सबूतों से करते हैं।
-        </p>
-
-    </section>
-
-
-    <!-- English -->
-    <section class="english">
-
-        <h2>Latest Fact Check</h2>
-
-        <div class="claim">
-
-            <h3>Example Political Claim</h3>
+            <h1>
+                What was said,
+                and what does the evidence show?
+            </h1>
 
             <p>
-                This is an example. Real claims and their
-                supporting evidence will appear here.
+                We examine factual claims made in political
+                speeches and compare them with publicly
+                available evidence.
             </p>
 
-            <p class="rating">
-                Rating: Unverified
-            </p>
+            <button
+                class="main-button"
+                onclick="showSection('checks')">
+
+                View Latest Fact Checks
+
+            </button>
+
+        </div>
+
+
+        <div class="hindi">
+
+            <h1>
+                क्या कहा गया और
+                सबूत क्या बताते हैं?
+            </h1>
 
             <p>
-                Evidence and sources will be displayed here.
+                हम राजनीतिक भाषणों में किए गए तथ्यात्मक
+                दावों की जांच करते हैं और उनकी तुलना
+                सार्वजनिक रूप से उपलब्ध सबूतों से करते हैं।
+            </p>
+
+            <button
+                class="main-button"
+                onclick="showSection('checks')">
+
+                नवीनतम तथ्य-जांच देखें
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="container section">
+
+        <div class="english">
+
+            <h2>How it works</h2>
+
+        </div>
+
+        <div class="hindi">
+
+            <h2>यह कैसे काम करता है</h2>
+
+        </div>
+
+
+        <br>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>1. Find the claim</h3>
+
+                <p>
+                    We identify factual statements
+                    made in political speeches.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>2. Check the evidence</h3>
+
+                <p>
+                    We compare claims with reliable
+                    public sources and available data.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>3. Publish the assessment</h3>
+
+                <p>
+                    We explain the evidence and clearly
+                    show the assessment and sources.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= SPEECHES ================= -->
+
+<section id="speeches"
+         class="page-section"
+         style="display:none;">
+
+    <div class="container section">
+
+
+        <div class="english">
+
+            <h1>Political Speeches</h1>
+
+            <p style="margin-top:15px;color:#666;">
+                Browse speeches and examine claims
+                made within them.
             </p>
 
         </div>
 
-    </section>
 
+        <div class="hindi">
 
-    <!-- Hindi -->
-    <section class="hindi">
+            <h1>राजनीतिक भाषण</h1>
 
-        <h2>नवीनतम तथ्य-जांच</h2>
-
-        <div class="claim">
-
-            <h3>उदाहरण राजनीतिक दावा</h3>
-
-            <p>
-                यह एक उदाहरण है। वास्तविक दावे और उनके
-                समर्थन में उपलब्ध सबूत यहां दिखाई देंगे।
-            </p>
-
-            <p class="rating">
-                स्थिति: अभी सत्यापित नहीं
-            </p>
-
-            <p>
-                सबूत और स्रोत यहां प्रदर्शित किए जाएंगे।
+            <p style="margin-top:15px;color:#666;">
+                भाषण देखें और उनमें किए गए दावों
+                की जांच करें।
             </p>
 
         </div>
 
-    </section>
 
-</main>
 
+        <!-- SPEECH 1 -->
+
+        <div class="speech">
+
+            <div class="date">
+                29 August 2026
+            </div>
+
+            <div class="speaker">
+                Example Political Leader
+            </div>
+
+            <h3>
+                Example Public Address
+            </h3>
+
+            <p>
+                Speech information will appear here.
+                Claims from the speech can be examined
+                against publicly available evidence.
+            </p>
+
+        </div>
+
+
+
+        <!-- SPEECH 2 -->
+
+        <div class="speech">
+
+            <div class="date">
+                28 August 2026
+            </div>
+
+            <div class="speaker">
+                Example Union Minister
+            </div>
+
+            <h3>
+                Example Government Address
+            </h3>
+
+            <p>
+                This is demonstration data.
+                Real speech information will be connected
+                later to the data system.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FACT CHECKS ================= -->
+
+<section id="checks"
+         class="page-section"
+         style="display:none;">
+
+    <div class="container section">
+
+
+        <div class="english">
+
+            <h1>Latest Fact Checks</h1>
+
+            <p style="margin-top:15px;color:#666;">
+                Evidence-based assessment of factual claims.
+            </p>
+
+        </div>
+
+
+        <div class="hindi">
+
+            <h1>नवीनतम तथ्य-जांच</h1>
+
+            <p style="margin-top:15px;color:#666;">
+                तथ्यात्मक दावों का सबूत-आधारित मूल्यांकन।
+            </p>
+
+        </div>
+
+
+
+        <!-- CLAIM -->
+
+        <div class="claim">
+
+
+            <div class="english">
+
+                <small>
+                    Example Speaker · 29 August 2026
+                </small>
+
+                <h2 style="margin-top:12px;">
+                    Example political claim
+                </h2>
+
+                <div class="rating">
+                    UNVERIFIED
+                </div>
+
+                <p>
+                    This is demonstration data.
+                    Evidence and source information will
+                    appear here after verification.
+                </p>
+
+                <p style="margin-top:15px;">
+                    <strong>Sources:</strong>
+                    Not yet available
+                </p>
+
+            </div>
+
+
+
+            <div class="hindi">
+
+                <small>
+                    उदाहरण वक्ता · 29 अगस्त 2026
+                </small>
+
+                <h2 style="margin-top:12px;">
+                    उदाहरण राजनीतिक दावा
+                </h2>
+
+                <div class="rating">
+                    सत्यापित नहीं
+                </div>
+
+                <p>
+                    यह उदाहरण डेटा है।
+                    सत्यापन के बाद सबूत और स्रोत
+                    की जानकारी यहां दिखाई जाएगी।
+                </p>
+
+                <p style="margin-top:15px;">
+                    <strong>स्रोत:</strong>
+                    अभी उपलब्ध नहीं
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= METHODOLOGY ================= -->
+
+<section id="methodology"
+         class="page-section"
+         style="display:none;">
+
+    <div class="container section">
+
+
+        <div class="english">
+
+            <h1>Our Methodology</h1>
+
+            <div class="method">
+
+                <p>
+                    We aim to evaluate factual claims using
+                    consistent evidence-based standards.
+                </p>
+
+                <ul>
+
+                    <li>
+                        Identify the exact claim being made.
+                    </li>
+
+                    <li>
+                        Determine the date, context and
+                        definition relevant to the claim.
+                    </li>
+
+                    <li>
+                        Prefer primary and authoritative
+                        sources whenever available.
+                    </li>
+
+                    <li>
+                        Compare the claim with the evidence.
+                    </li>
+
+                    <li>
+                        Explain uncertainty when evidence
+                        is incomplete or disputed.
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="hindi">
+
+            <h1>हमारी तथ्य-जांच पद्धति</h1>
+
+            <div class="method">
+
+                <p>
+                    हमारा उद्देश्य लगातार और
+                    सबूत-आधारित मानकों के अनुसार
+                    तथ्यात्मक दावों का मूल्यांकन करना है।
+                </p>
+
+                <ul>
+
+                    <li>
+                        किए गए सटीक दावे की पहचान करना।
+                    </li>
+
+                    <li>
+                        दावे की तारीख, संदर्भ और
+                        परिभाषा निर्धारित करना।
+                    </li>
+
+                    <li>
+                        जहां संभव हो, प्राथमिक और
+                        आधिकारिक स्रोतों को प्राथमिकता देना।
+                    </li>
+
+                    <li>
+                        दावे की तुलना उपलब्ध सबूतों से करना।
+                    </li>
+
+                    <li>
+                        सबूत अधूरे या विवादित होने पर
+                        अनिश्चितता स्पष्ट करना।
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
     <div class="english">
+
+        <strong>
+            SpeechCheck India
+        </strong>
+
         <p>
-            This website is intended for evidence-based
-            political fact-checking.
+            Evidence-based political fact checking.
         </p>
+
     </div>
 
+
     <div class="hindi">
+
+        <strong>
+            स्पीचचेक इंडिया
+        </strong>
+
         <p>
-            यह वेबसाइट सबूत-आधारित राजनीतिक तथ्य-जांच के लिए है।
+            सबूत-आधारित राजनीतिक तथ्य-जांच।
         </p>
+
     </div>
 
 </footer>
 
 
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script>
+
+
+/* PAGE NAVIGATION */
+
+function showSection(sectionId) {
+
+    const sections =
+        document.querySelectorAll(".page-section");
+
+
+    sections.forEach(function(section) {
+
+        section.style.display = "none";
+
+    });
+
+
+    document.getElementById(sectionId)
+        .style.display = "block";
+
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+}
+
+
+
+/* LANGUAGE */
 
 function changeLanguage(language) {
 
-    const englishElements =
+    const english =
         document.querySelectorAll(".english");
 
-    const hindiElements =
+    const hindi =
         document.querySelectorAll(".hindi");
 
 
     if (language === "en") {
 
-        englishElements.forEach(function(element) {
-            element.style.display = "block";
+        english.forEach(function(element) {
+
+            element.style.display = "";
+
         });
 
-        hindiElements.forEach(function(element) {
+
+        hindi.forEach(function(element) {
+
             element.style.display = "none";
+
         });
+
 
         document.documentElement.lang = "en";
 
@@ -231,13 +852,19 @@ function changeLanguage(language) {
 
     if (language === "hi") {
 
-        englishElements.forEach(function(element) {
+        english.forEach(function(element) {
+
             element.style.display = "none";
+
         });
 
-        hindiElements.forEach(function(element) {
-            element.style.display = "block";
+
+        hindi.forEach(function(element) {
+
+            element.style.display = "";
+
         });
+
 
         document.documentElement.lang = "hi";
 
@@ -245,7 +872,10 @@ function changeLanguage(language) {
 
 }
 
+
 </script>
 
+
 </body>
-</html>
+
+    </html>
