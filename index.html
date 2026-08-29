@@ -464,87 +464,278 @@
 
     <div class="container section">
 
-
         <div class="english">
 
             <h1>Political Speeches</h1>
 
             <p style="margin-top:15px;color:#666;">
-                Browse speeches and examine claims
-                made within them.
+                Search and browse political speeches.
             </p>
 
         </div>
-
 
         <div class="hindi">
 
             <h1>राजनीतिक भाषण</h1>
 
             <p style="margin-top:15px;color:#666;">
-                भाषण देखें और उनमें किए गए दावों
-                की जांच करें।
+                राजनीतिक भाषण खोजें और देखें।
             </p>
 
         </div>
 
 
+        <!-- SEARCH -->
 
-        <!-- SPEECH 1 -->
+        <div style="margin-top:30px;">
 
-        <div class="speech">
-
-            <div class="date">
-                29 August 2026
-            </div>
-
-            <div class="speaker">
-                Example Political Leader
-            </div>
-
-            <h3>
-                Example Public Address
-            </h3>
-
-            <p>
-                Speech information will appear here.
-                Claims from the speech can be examined
-                against publicly available evidence.
-            </p>
+            <input
+                type="text"
+                id="speechSearch"
+                placeholder="Search speeches or speakers..."
+                onkeyup="searchSpeeches()"
+                style="
+                    width:100%;
+                    padding:15px;
+                    border:1px solid #ddd;
+                    border-radius:8px;
+                    font-size:16px;
+                "
+            >
 
         </div>
 
 
+        <!-- CATEGORY BUTTONS -->
 
-        <!-- SPEECH 2 -->
+        <div style="
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            margin-top:20px;
+        ">
 
-        <div class="speech">
+            <button
+                class="main-button"
+                onclick="filterSpeeches('all')">
 
-            <div class="date">
-                28 August 2026
-            </div>
+                <span class="english">All</span>
+                <span class="hindi">सभी</span>
 
-            <div class="speaker">
-                Example Union Minister
-            </div>
+            </button>
 
-            <h3>
-                Example Government Address
-            </h3>
 
-            <p>
-                This is demonstration data.
-                Real speech information will be connected
-                later to the data system.
-            </p>
+            <button
+                class="main-button"
+                onclick="filterSpeeches('pm')">
+
+                <span class="english">
+                    Prime Minister
+                </span>
+
+                <span class="hindi">
+                    प्रधानमंत्री
+                </span>
+
+            </button>
+
+
+            <button
+                class="main-button"
+                onclick="filterSpeeches('minister')">
+
+                <span class="english">
+                    Union Ministers
+                </span>
+
+                <span class="hindi">
+                    केंद्रीय मंत्री
+                </span>
+
+            </button>
+
+
+            <button
+                class="main-button"
+                onclick="filterSpeeches('other')">
+
+                <span class="english">
+                    Other Leaders
+                </span>
+
+                <span class="hindi">
+                    अन्य नेता
+                </span>
+
+            </button>
 
         </div>
 
+
+        <!-- SPEECH LIST -->
+
+        <div id="speechList">
+
+
+            <!-- PM -->
+
+            <article
+                class="speech speech-item"
+                data-category="pm">
+
+                <div class="date">
+                    Example Date
+                </div>
+
+                <div class="speaker">
+
+                    <span class="english">
+                        Prime Minister
+                    </span>
+
+                    <span class="hindi">
+                        प्रधानमंत्री
+                    </span>
+
+                </div>
+
+                <h3>
+
+                    <span class="english">
+                        Example Prime Minister Speech
+                    </span>
+
+                    <span class="hindi">
+                        उदाहरण प्रधानमंत्री भाषण
+                    </span>
+
+                </h3>
+
+                <p>
+
+                    <span class="english">
+                        Speech details and verified
+                        claims will appear here.
+                    </span>
+
+                    <span class="hindi">
+                        भाषण का विवरण और सत्यापित दावे
+                        यहां दिखाई देंगे।
+                    </span>
+
+                </p>
+
+            </article>
+
+
+            <!-- UNION MINISTER -->
+
+            <article
+                class="speech speech-item"
+                data-category="minister">
+
+                <div class="date">
+                    Example Date
+                </div>
+
+                <div class="speaker">
+
+                    <span class="english">
+                        Union Minister
+                    </span>
+
+                    <span class="hindi">
+                        केंद्रीय मंत्री
+                    </span>
+
+                </div>
+
+                <h3>
+
+                    <span class="english">
+                        Example Union Minister Speech
+                    </span>
+
+                    <span class="hindi">
+                        उदाहरण केंद्रीय मंत्री भाषण
+                    </span>
+
+                </h3>
+
+                <p>
+
+                    <span class="english">
+                        Speech details and verified
+                        claims will appear here.
+                    </span>
+
+                    <span class="hindi">
+                        भाषण का विवरण और सत्यापित दावे
+                        यहां दिखाई देंगे।
+                    </span>
+
+                </p>
+
+            </article>
+
+
+            <!-- OTHER LEADER -->
+
+            <article
+                class="speech speech-item"
+                data-category="other">
+
+                <div class="date">
+                    Example Date
+                </div>
+
+                <div class="speaker">
+
+                    <span class="english">
+                        Other Political Leader
+                    </span>
+
+                    <span class="hindi">
+                        अन्य राजनीतिक नेता
+                    </span>
+
+                </div>
+
+                <h3>
+
+                    <span class="english">
+                        Example Political Speech
+                    </span>
+
+                    <span class="hindi">
+                        उदाहरण राजनीतिक भाषण
+                    </span>
+
+                </h3>
+
+                <p>
+
+                    <span class="english">
+                        Speech details and verified
+                        claims will appear here.
+                    </span>
+
+                    <span class="hindi">
+                        भाषण का विवरण और सत्यापित दावे
+                        यहां दिखाई देंगे।
+                    </span>
+
+                </p>
+
+            </article>
+
+
+        </div>
 
     </div>
 
 </section>
-
+                
 
 
 <!-- ================= FACT CHECKS ================= -->
