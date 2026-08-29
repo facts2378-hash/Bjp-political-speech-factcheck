@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Political Speech Fact Check | राजनीतिक भाषण तथ्य-जांच</title>
+
+    <style>
+        body {
+            font-family: Arial, "Noto Sans Devanagari", sans-serif;
+            margin: 0;
+            background: #f4f4f4;
+            color: #222;
+        }
+
+        header {
+            background: #111;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            margin-top: 15px;
+        }
+
+        button {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px;
+        }
+
+        .hero {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .claim {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        .rating {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        footer {
+            margin-top: 40px;
+            padding: 25px;
+            text-align: center;
+            background: #111;
+            color: white;
+        }
+
+        .hindi {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <!-- English -->
+    <div class="english">
+        <h1>Political Speech Fact Check</h1>
+        <p>Independent verification of political claims</p>
+    </div>
+
+    <!-- Hindi -->
+    <div class="hindi">
+        <h1>राजनीतिक भाषण तथ्य-जांच</h1>
+        <p>राजनीतिक दावों का स्वतंत्र सत्यापन</p>
+    </div>
+
+    <nav>
+        <button onclick="changeLanguage('en')">
+            English
+        </button>
+
+        <button onclick="changeLanguage('hi')">
+            हिंदी
+        </button>
+    </nav>
+
+</header>
+
+
+<main class="container">
+
+    <!-- English version -->
+    <section class="hero english">
+
+        <h2>What was said, and what does the evidence show?</h2>
+
+        <p>
+            We examine statements made in political speeches
+            and compare them with publicly available evidence.
+        </p>
+
+    </section>
+
+
+    <!-- Hindi version -->
+    <section class="hero hindi">
+
+        <h2>क्या कहा गया और सबूत क्या बताते हैं?</h2>
+
+        <p>
+            हम राजनीतिक भाषणों में किए गए दावों की जांच करते हैं
+            और उनकी तुलना सार्वजनिक रूप से उपलब्ध सबूतों से करते हैं।
+        </p>
+
+    </section>
+
+
+    <!-- English -->
+    <section class="english">
+
+        <h2>Latest Fact Check</h2>
+
+        <div class="claim">
+
+            <h3>Example Political Claim</h3>
+
+            <p>
+                This is an example. Real claims and their
+                supporting evidence will appear here.
+            </p>
+
+            <p class="rating">
+                Rating: Unverified
+            </p>
+
+            <p>
+                Evidence and sources will be displayed here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Hindi -->
+    <section class="hindi">
+
+        <h2>नवीनतम तथ्य-जांच</h2>
+
+        <div class="claim">
+
+            <h3>उदाहरण राजनीतिक दावा</h3>
+
+            <p>
+                यह एक उदाहरण है। वास्तविक दावे और उनके
+                समर्थन में उपलब्ध सबूत यहां दिखाई देंगे।
+            </p>
+
+            <p class="rating">
+                स्थिति: अभी सत्यापित नहीं
+            </p>
+
+            <p>
+                सबूत और स्रोत यहां प्रदर्शित किए जाएंगे।
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <div class="english">
+        <p>
+            This website is intended for evidence-based
+            political fact-checking.
+        </p>
+    </div>
+
+    <div class="hindi">
+        <p>
+            यह वेबसाइट सबूत-आधारित राजनीतिक तथ्य-जांच के लिए है।
+        </p>
+    </div>
+
+</footer>
+
+
+<script>
+
+function changeLanguage(language) {
+
+    const englishElements =
+        document.querySelectorAll(".english");
+
+    const hindiElements =
+        document.querySelectorAll(".hindi");
+
+
+    if (language === "en") {
+
+        englishElements.forEach(function(element) {
+            element.style.display = "block";
+        });
+
+        hindiElements.forEach(function(element) {
+            element.style.display = "none";
+        });
+
+        document.documentElement.lang = "en";
+
+    }
+
+
+    if (language === "hi") {
+
+        englishElements.forEach(function(element) {
+            element.style.display = "none";
+        });
+
+        hindiElements.forEach(function(element) {
+            element.style.display = "block";
+        });
+
+        document.documentElement.lang = "hi";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
