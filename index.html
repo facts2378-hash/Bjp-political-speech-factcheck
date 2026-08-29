@@ -746,98 +746,174 @@
 
     <div class="container section">
 
-
         <div class="english">
 
-            <h1>Latest Fact Checks</h1>
+            <h1>BJP Minister Speech Fact Checks</h1>
 
             <p style="margin-top:15px;color:#666;">
-                Evidence-based assessment of factual claims.
+                Evidence-based assessments of factual claims
+                made in speeches by BJP ministers and leaders.
             </p>
 
         </div>
 
-
         <div class="hindi">
 
-            <h1>नवीनतम तथ्य-जांच</h1>
+            <h1>भाजपा नेताओं के भाषणों की तथ्य-जांच</h1>
 
             <p style="margin-top:15px;color:#666;">
+                भाजपा मंत्रियों और नेताओं के भाषणों में किए गए
                 तथ्यात्मक दावों का सबूत-आधारित मूल्यांकन।
             </p>
 
         </div>
 
 
+        <!-- SEARCH -->
 
-        <!-- CLAIM -->
-
-        <div class="claim">
-
-
-            <div class="english">
-
-                <small>
-                    Example Speaker · 29 August 2026
-                </small>
-
-                <h2 style="margin-top:12px;">
-                    Example political claim
-                </h2>
-
-                <div class="rating">
-                    UNVERIFIED
-                </div>
-
-                <p>
-                    This is demonstration data.
-                    Evidence and source information will
-                    appear here after verification.
-                </p>
-
-                <p style="margin-top:15px;">
-                    <strong>Sources:</strong>
-                    Not yet available
-                </p>
-
-            </div>
+        <input
+            type="text"
+            id="factSearch"
+            placeholder="Search minister, claim or topic..."
+            onkeyup="searchFacts()"
+            style="
+                width:100%;
+                margin-top:30px;
+                padding:15px;
+                border:1px solid #ddd;
+                border-radius:8px;
+                font-size:16px;
+            "
+        >
 
 
+        <!-- FILTERS -->
 
-            <div class="hindi">
+        <div style="
+            display:flex;
+            gap:10px;
+            flex-wrap:wrap;
+            margin-top:20px;
+        ">
 
-                <small>
-                    उदाहरण वक्ता · 29 अगस्त 2026
-                </small>
+            <button
+                class="main-button"
+                onclick="filterFacts('all')">
+                All
+            </button>
 
-                <h2 style="margin-top:12px;">
-                    उदाहरण राजनीतिक दावा
-                </h2>
+            <button
+                class="main-button"
+                onclick="filterFacts('false')">
+                False
+            </button>
 
-                <div class="rating">
-                    सत्यापित नहीं
-                </div>
+            <button
+                class="main-button"
+                onclick="filterFacts('misleading')">
+                Misleading
+            </button>
 
-                <p>
-                    यह उदाहरण डेटा है।
-                    सत्यापन के बाद सबूत और स्रोत
-                    की जानकारी यहां दिखाई जाएगी।
-                </p>
+            <button
+                class="main-button"
+                onclick="filterFacts('true')">
+                True
+            </button>
 
-                <p style="margin-top:15px;">
-                    <strong>स्रोत:</strong>
-                    अभी उपलब्ध नहीं
-                </p>
-
-            </div>
-
+            <button
+                class="main-button"
+                onclick="filterFacts('unverified')">
+                Unverified
+            </button>
 
         </div>
+
+
+        <!-- FACT CHECK 1 -->
+
+        <article
+            class="claim fact-item"
+            data-verdict="unverified">
+
+            <small>
+                Example BJP Minister · Example Date
+            </small>
+
+            <h2 style="margin-top:12px;">
+                Example speech claim
+            </h2>
+
+            <div class="rating">
+                UNVERIFIED
+            </div>
+
+            <p>
+                This is a placeholder. A real claim should
+                only receive a verdict after checking reliable
+                evidence.
+            </p>
+
+            <p style="margin-top:15px;">
+                <strong>Evidence:</strong>
+                Not yet added
+            </p>
+
+            <p style="margin-top:10px;">
+                <strong>Source:</strong>
+                Not yet added
+            </p>
+
+            <p style="margin-top:10px;color:#777;">
+                Last checked: Not yet checked
+            </p>
+
+        </article>
+
+
+        <!-- FACT CHECK 2 -->
+
+        <article
+            class="claim fact-item"
+            data-verdict="false">
+
+            <small>
+                Example BJP Minister · Example Date
+            </small>
+
+            <h2 style="margin-top:12px;">
+                Example claim requiring verification
+            </h2>
+
+            <div class="rating">
+                FALSE
+            </div>
+
+            <p>
+                Demonstration only. Do not publish a real
+                person's claim as false unless reliable
+                evidence supports that assessment.
+            </p>
+
+            <p style="margin-top:15px;">
+                <strong>Evidence:</strong>
+                Example evidence
+            </p>
+
+            <p style="margin-top:10px;">
+                <strong>Source:</strong>
+                Example source
+            </p>
+
+            <p style="margin-top:10px;color:#777;">
+                Last checked: Example Date
+            </p>
+
+        </article>
+
 
     </div>
 
 </section>
-
 
 
 <!-- ================= METHODOLOGY ================= -->
